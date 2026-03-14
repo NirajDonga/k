@@ -36,3 +36,8 @@ kubectl delete pod nginx-demo
 ```bash
 kind delete cluster --name local
 ```
+
+
+# use this every time. no command line
+
+kubectl apply -f manifest.yml
