@@ -1,26 +1,38 @@
-# Cluster Management with Kind
+# Kind + kubectl Commands
 
-### Create a Cluster
+## Create Cluster
+
+Linux:
+
 ```bash
-kind create cluster --config .\clusters.yml --name local
+kind create cluster --config ./clusters.yml --name local
 ```
 
-### Delete the Cluster
+## Verify
+
 ```bash
-kind delete cluster -n local
+kubectl get nodes
+kubectl get pods -A
 ```
 
-### Credentials
-Credentials are stored in:
-```bash
-cat ~/.kube/config
-```
-This is the file from which `kubectl` will pick and authorize access to the cluster.
+Watch:
 
-### Verify
-List pods:
 ```bash
-kubectl get pods
+kubectl get nodes -w
 ```
 
-Watch the command with the `-w` flag.
+## Test Pod
+
+```bash
+kubectl run nginx-demo --image=nginx --port=80
+kubectl get pod nginx-demo
+kubectl logs -f nginx-demo
+kubectl describe pod nginx-demo
+kubectl delete pod nginx-demo
+```
+
+## Delete Cluster
+
+```bash
+kind delete cluster --name local
+```
