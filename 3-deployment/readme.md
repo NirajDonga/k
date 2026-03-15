@@ -37,3 +37,6 @@ kubectl get replicaset   # new RS created, old RS scaled to 0
 ## 4) bad image test
 
 Set an invalid image name in `deployment.yml` and apply. The new pods will fail (`ImagePullBackOff`) while old pods keep running — deployment does not replace them until the new version is healthy.
+
+### Rollback command
+kubectl rollout undo deployment/nginx-deployment --to-revision=1
