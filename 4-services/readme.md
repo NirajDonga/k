@@ -22,6 +22,7 @@ After creating `NodePort.yml`, requests sent to any node IP on port `30007` can 
 - Used for internal communication between services/pods.
 - The IP is accessible only inside the cluster, not from outside.
 
+
 ## Commands Used
 
 ```bash
