@@ -1,15 +1,26 @@
-ephemeral volumes => two containers in pod want to share data. pod dies. volume gone
-persistant volumes
+# Volumes
 
+## Ephemeral (emptyDir)
+Shared between containers in a pod. Lost when pod is deleted.
 
-static persistant volume
-make pv
-make pvc
-make pod and boundd with pvc
+```bash
+kubectl apply -f ephermal.yml
+kubectl get pods -l app=shared-volume-app
+```
 
-pod <-> pvc <-> pv
+## Static Persistent Volumes (NFS)
+Manually created PV + PVC binding.
 
+```bash
+kubectl apply -f static-k8.yml
+kubectl get pv,pvc
+```
 
-auto
-no need to create pv.
-provider handle that
+## Docker Compose NFS Server
+
+```bash
+docker compose -f static-dockercompose.yml up -d
+```
+
+## Dynamic Provisioning (StorageClass)
+Provider automatically creates PV.

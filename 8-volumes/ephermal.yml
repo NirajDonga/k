@@ -18,13 +18,13 @@ spec:
         command: []
         volumeMounts:
         - name: shared-data
-          mountPath: "/data 
+          mountPath: "/data"
       - name: reader
         image: busybox
         command: []
         volumeMounts:
         - name: shared-data
-          mountPath: "/data 
+          mountPath: "/data"
 
       volumes:
       - name: shared-data
