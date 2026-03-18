@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: todo-backend
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: env-file
+          readOnly: true
+          mountPath: "/app/secret" 
+
+        # env: 
+        # - name: PORT
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: backend-configmap
+        #       key: port
+        # - name: DATABASE_URL
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: backend-secrets
+        #       key: database_url
+
+      volumes:
+      - name: env-file
+        secret: 
+          secretName: backend-secrets
