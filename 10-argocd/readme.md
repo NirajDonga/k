@@ -23,3 +23,5 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443 (ton acces ui)
 kubectl -n argocd get secret argocd-initial-admin-secret -o json
 
 decode the password and admin is username
+make application fill details.
+
